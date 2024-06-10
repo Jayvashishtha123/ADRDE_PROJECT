@@ -14,10 +14,10 @@ function Footer() {
     <Container fluid className="footer">
       <Row>
         <Col md="4" className="footer-copywright">
-          <h3>Designed and Developed by 74.97.121</h3>
+          <h3>Developed for DRDO</h3>
         </Col>
         <Col md="4" className="footer-copywright">
-          <h3>Copyright © {year} J.v.v</h3>
+          <h3>© {year} Defence Research and Development Organisation</h3>
         </Col>
         <Col md="4" className="footer-body">
           <ul className="footer-icons">
@@ -33,7 +33,7 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://www.threads.net/@74.97.121.v.v"
+                href="https://twitter.com/DRDO_India"
                 style={{ color: "white" }}
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -43,7 +43,7 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://www.linkedin.com/in/jay-vardhan-vashishtha-6aa069250/"
+                href="https://www.linkedin.com/company/drdo/"
                 style={{ color: "white" }}
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -53,7 +53,7 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://www.instagram.com/74.97.121.v.v/"
+                href="https://www.instagram.com/drdo.india/"
                 style={{ color: "white" }}
                 target="_blank" 
                 rel="noopener noreferrer"

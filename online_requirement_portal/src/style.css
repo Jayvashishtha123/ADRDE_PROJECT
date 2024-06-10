@@ -2,16 +2,16 @@ html {
   --section-background-color: linear-gradient(
     to bottom left,
     rgba(9, 228, 199, 0.582),
-    rgba(7, 8, 8, 0.904)
+    rgba(27, 186, 186, 0.904)
   );
 
   --image-gradient: linear-gradient(
     to bottom left,
-    rgba(195, 178, 52, 0.678),
-    rgba(12, 16, 13, 0.863)
+    rgba(243, 23, 23, 0.678),
+    rgba(51, 211, 91, 0.863)
   );
 
-  --imp-text-color: #546eae;
+  --imp-text-color: #0f46d0;
 }
 
 .purple {
@@ -49,7 +49,7 @@ button:focus {
 /* --------- */
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 5px;
 }
 
 /* Track */
@@ -59,7 +59,7 @@ button:focus {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgba(127, 244, 3, 0.959);
+  background: rgba(68, 77, 59, 0.959);
   border-radius: 12px;
 }
 
@@ -73,6 +73,7 @@ button:focus {
 /* Navbar Section  */
 /* --------- */
 .sticky {
+  border: 1px solid black;
   background-color: #9693cea9 !important;
   transition: all 0.3s ease-out 0s !important;
   box-shadow: 0px 10px 10px 0px rgba(43, 10, 207, 0.171) !important;
@@ -80,6 +81,8 @@ button:focus {
 }
 
 .navbar {
+  border: 1px solid black;
+  background-color: #0f46d0;
   position: fixed !important;
   transition: all 0.3s ease-out 0s !important;
   padding: 0.3rem 2rem !important;
@@ -135,6 +138,10 @@ button:focus {
   top: 10px !important;
   transform: rotate(-135deg) !important;
   opacity: 0.9 !important;
+}
+
+.logout-btn{
+  margin-top: 10px;
 }
 
 @media (max-width: 767px) {
@@ -248,20 +255,26 @@ button:focus {
 }
 
 .home-header {
+  color: black;
+  font-weight: bold;
   padding-top: 80px !important;
 }
 
 .home-section {
   position: relative;
   z-index: -1;
-  background-image: var(--image-gradient), url(./Assets/home-bg.jpg);
+  background-image: var(--image-gradient), url(./Assets/drdo_bg_img.jpeg);
   background-position: top center;
   background-repeat: no-repeat;
   padding-bottom: 30px !important;
   padding-top: 30px !important;
+  background-size: cover;
+
 }
 
 .home-content {
+  font-weight: bold;
+  color: black;
   padding: 9rem 0 2rem !important;
   color: rgb(173, 155, 155);
   text-align: left;
@@ -273,6 +286,7 @@ button:focus {
 }
 
 .heading-name {
+  color: black;
   font-size: 2.5em !important;
   padding-left: 45px !important;
 }
@@ -283,7 +297,7 @@ button:focus {
 
 .Typewriter__wrapper {
   font-size: 2.2em !important;
-  color: #3a92be !important;
+  color: #000000 !important;
   font-weight: 600 !important;
 }
 .Typewriter__cursor {
@@ -595,93 +609,6 @@ button:focus {
     padding-top: 0 !important;
   }
 }
-/* --------- */
-/* Resume */
-/* --------- */
-
-.resume-section {
-  position: relative !important;
-  padding-top: 110px !important;
-  padding-bottom: 30px !important;
-  background-image: var(--section-background-color) !important;
-  color: white !important;
-}
-
-.resume {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  justify-content: center;
-}
-
-.resume-left {
-  padding-right: 80px !important;
-}
-
-.resume-right {
-  padding-left: 80px !important;
-}
-
-@media (max-width: 767px) {
-  .resume-left {
-    padding-right: 15px !important;
-    padding-left: 15px !important;
-  }
-
-  .resume-right {
-    padding-right: 15px !important;
-    padding-left: 15px !important;
-  }
-}
-.resume .resume-title {
-  font-size: 2em;
-  font-weight: 700;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.resume .resume-item {
-  padding: 0 0 10px 25px;
-  margin-top: -2px;
-  border-left: 2px solid #8a49a8;
-  position: relative;
-}
-
-.resume .resume-item .resume-title {
-  line-height: 18px;
-  font-size: 0.9em;
-  background: #5234795d;
-  padding: 8px 15px;
-  display: inline-block;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.resume .resume-item ul {
-  padding-left: 20px;
-  text-align: justify;
-}
-
-.resume .resume-item ul li {
-  padding-bottom: 10px;
-  list-style: none;
-}
-
-.resume .resume-item:last-child {
-  padding-bottom: 0;
-}
-
-.resume .resume-item::before {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50px;
-  left: -9px;
-  top: 0;
-  background: #fff;
-  border: 2px solid #8a49a8;
-}
-
 .like-item {
   padding-top: 10px !important;
   font-size: 1.1em !important;
@@ -737,4 +664,550 @@ button:focus {
 }
 .fork-btn-inner::after {
   display: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Extra */
+.home-about-section {
+  padding: 50px 0;
+}
+
+.home-about-description {
+  margin-bottom: 50px;
+}
+
+.purple {
+  color: #6c63ff;
+}
+
+.myAvtar img {
+  border-radius: 50%;
+}
+
+.home-about-social {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.home-about-social-links {
+  list-style: none;
+  padding: 0;
+}
+
+.home-about-social-links .social-icons {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.home-social-icons {
+  font-size: 2rem;
+  color: #6c63ff;
+  transition: color 0.3s;
+}
+
+.home-social-icons:hover {
+  color: #343a40;
+}
+.service-card {
+  margin: 20px 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: transform 0.3s;
+  height: 100%; /* Set a fixed height for all cards */
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+}
+
+.service-card .card-body {
+  padding: 30px;
+  text-align: center;
+}
+
+.service-card .card-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #6c63ff;
+}
+
+.service-card .card-text {
+  font-size: 1rem;
+  color: #555;
+}
+
+
+.h1{
+  color: white;
+}
+
+
+
+/* IT Related Page CSS */
+/* Service1.css */
+
+.service1-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Set the height to the full viewport height */
+  background-color: #0888af; /* Light background color */
+}
+
+.service1-heading {
+  font-weight: bold;
+  font-size: 5em;
+  color: #ffffff; /* Dark text color */
+  margin-bottom: 20px;
+}
+
+.service1-description {
+  color: #ffffff; /* Medium text color */
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+.service1-form {
+  width: 100%;
+  max-width: 400px; /* Limit the form width */
+  background-color: #fff; /* White background color */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+  transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+}
+
+.service1-form:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+.service1-form-group {
+  margin-bottom: 20px;
+}
+
+.service1-label {
+  color: #555; /* Darker text color */
+  display: block;
+  margin-bottom: 5px;
+}
+
+.service1-input,
+.service1-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.service1-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for button color */
+}
+
+.service1-button:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}
+
+
+
+/* Service2.css */
+.service2-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Set the height to the full viewport height */
+  background-color: #0888af; /* Light background color */
+}
+
+.service2-heading {
+font-weight: bold;
+  font-size: 5em;
+  color: #ffffff; /* Dark text color */
+  margin-bottom: 20px;
+}
+
+.service2-description {
+  color: #ffffff; /* Medium text color */
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+.service2-form {
+  width: 100%;
+  max-width: 400px; /* Limit the form width */
+  background-color: #fff; /* White background color */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+  transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+}
+
+.service2-form:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+.service2-form-group {
+  margin-bottom: 20px;
+}
+
+.service2-label {
+  color: #555; /* Darker text color */
+  display: block;
+  margin-bottom: 5px;
+}
+
+.service2-input,
+.service2-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.service2-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for button color */
+}
+
+.service2-button:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}
+
+
+/* Service3 container */
+.service3-container {
+  position: relative; /* Ensure relative positioning */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #0f3057; /* Updated background color with a darker shade */
+  min-height: 100vh;
+}
+
+/* Heading */
+.service3-heading {
+  font-size: 5em;
+  color: #ffffff; /* White text color */
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for a subtle effect */
+}
+
+.service3-notice{
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+/* Description */
+.service3-description {
+  color: #ffffff; /* White text color */
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 30px;
+  font-size: 1.2rem; /* Increased font size for better readability */
+}
+
+/* Form */
+.service3-form {
+  width: 100%;
+  max-width: 400px;
+  background-color: #f8f9fa; /* Lighter background color */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increased shadow for a prominent effect */
+}
+
+.service3-form:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
+}
+
+/* Form group */
+.service3-form-group {
+  margin-bottom: 20px;
+}
+
+/* Label */
+.service3-label {
+  color: #343a40; /* Dark text color */
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Input, select, textarea */
+.service3-input,
+.service3-select,
+.service3-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da; /* Updated border color */
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Button */
+.service3-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.service3-button:hover {
+  background-color: #0056b3;
+}
+/* Clock */
+.service3-clock {
+  position: absolute;
+  top: 100px; /* Adjusted top position */
+  right: 20px;
+  z-index: 1; /* Ensure clock is above other elements */
+  font-family: "Arial", sans-serif; /* Set font family */
+  font-size: 2rem; /* Adjust font size */
+  background-color: #0f3057; /* Dark background color */
+  color: #ffffff; /* White text color */
+  padding: 10px 20px; /* Add padding for spacing */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+}
+
+
+
+/* For Login page *//* Login Page Styles */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
+}
+
+.login-content {
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-header h3 {
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.error-message {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.link-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.link-container a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.link-container a:hover {
+  text-decoration: underline;
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.or-divider .line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.or-divider .text {
+  margin: 0 10px;
+  color: #999;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
+
+
+/* For sign up page */
+/* styles.css */
+/* Register Container */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
+}
+
+/* Register Form Container */
+.register-form-container {
+  width: 400px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Register Heading */
+.register-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Register Title */
+.register-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* Register Form */
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Register Input Group */
+.register-input-group {
+  margin-bottom: 20px;
+}
+
+/* Register Input Label */
+.register-input-group label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* Register Input */
+.register-input-group input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Error Message */
+.error-message {
+  font-size: 14px;
+  color: #ff0000;
+  margin-top: 5px;
+}
+
+/* Register Submit Button */
+.register-submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Disabled Register Submit Button */
+.register-submit-button.disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Register Login Link */
+.register-login-link {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Login Link */
+.login-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Hover Effect on Login Link */
+.login-link:hover {
+  text-decoration: underline;
 }
