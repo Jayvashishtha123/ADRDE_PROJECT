@@ -12,6 +12,7 @@ function Service3() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
+    alert("Form submitted successfully!");
   };
 
   useEffect(() => {
@@ -35,87 +36,85 @@ function Service3() {
         {/* Displaying the digital clock */}
         <DigitalClock />
       </div>
-      {!isBookingAllowed && (
+      {isBookingAllowed ? (
+        <form className="service3-form" onSubmit={handleSubmit}>
+          <div className="service3-form-group">
+            <label className="service3-label" htmlFor="userName">
+              User Name:
+            </label>
+            <input
+              className="service3-input"
+              type="text"
+              id="userName"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="service3-form-group">
+            <label className="service3-label" htmlFor="department">
+              Department:
+            </label>
+            <input
+              className="service3-input"
+              type="text"
+              id="department"
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+              required
+            />
+          </div>
+          <div className="service3-form-group">
+            <label className="service3-label" htmlFor="date">
+              Date:
+            </label>
+            <input
+              className="service3-input"
+              type="date"
+              id="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+            />
+          </div>
+          <div className="service3-form-group">
+            <label className="service3-label" htmlFor="mealType">
+              Meal Type:
+            </label>
+            <select
+              className="service3-select"
+              id="mealType"
+              value=                                             {mealType}
+              onChange={(e) => setMealType(e.target.value)}
+              required
+            >
+              <option value="">Select meal type</option>
+              <option value="vegetarian">Vegetarian</option>
+             
+            </select>
+          </div>
+          <div className="service3-form-group">
+            <label className="service3-label" htmlFor="specialRequests">
+              Special Requests:
+            </label>
+            <textarea
+              className="service3-input"
+              id="specialRequests"
+              value={specialRequests}
+              onChange={(e) => setSpecialRequests(e.target.value)}
+            ></textarea>
+          </div>
+          <button className="service3-button" type="submit">
+            Submit
+          </button>
+        </form>
+      ) : (
         <div className="service3-notice">
           <p>Booking can only be done before 11:00 AM.</p>
         </div>
       )}
-      <form className="service3-form" onSubmit={handleSubmit}>
-
-
-
-      <div className="service3-form-group">
-<label className="service3-label" htmlFor="userName">
-  User Name:
-</label>
-<input
-  className="service3-input"
-  type="text"
-  id="userName"
-  value={userName}
-  onChange={(e) => setUserName(e.target.value)}
-/>
-</div>
-<div className="service3-form-group">
-<label className="service3-label" htmlFor="department">
-  Department:
-</label>
-<input
-  className="service3-input"
-  type="text"
-  id="department"
-  value={department}
-  onChange={(e) => setDepartment(e.target.value)}
-/>
-</div>
-<div className="service3-form-group">
-<label className="service3-label" htmlFor="date">
-  Date:
-</label>
-<input
-  className="service3-input"
-  type="date"
-  id="date"
-  value={date}
-  onChange={(e) => setDate(e.target.value)}
-/>
-</div>
-<div className="service3-form-group">
-<label className="service3-label" htmlFor="mealType">
-  Meal Type:
-</label>
-<select
-  className="service3-select"
-  id="mealType"
-  value={mealType}
-  onChange={(e) => setMealType(e.target.value)}
->
-  <option value="">Select meal type</option>
-  <option value="vegetarian">Vegetarian</option>
-  <option value="nonVegetarian">Non-Vegetarian</option>
-  <option value="vegan">Vegan</option>
-  <option value="glutenFree">Gluten-Free</option>
-</select>
-</div>
-<div className="service3-form-group">
-<label className="service3-label" htmlFor="specialRequests">
-  Special Requests:
-</label>
-<textarea
-  className="service3-input"
-  id="specialRequests"
-  value={specialRequests}
-  onChange={(e) => setSpecialRequests(e.target.value)}
-></textarea>
-</div>
-<button className="service3-button" type="submit">
-Submit
-</button>      </form>
     </div>
   );
 }
 
 export default Service3;
-
-
-

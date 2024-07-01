@@ -69,21 +69,29 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
           </Nav>
-          <nav className='flex flex-row gap-x-2 w-full z-20 fixed top-0 left-0 h-12 border-b place-content-center items-center bg-gray-200'>
-            {
-                userLoggedIn
-                    ?
-                    <>
-                        <button onClick={() => { doSignOut().then(() => { navigate('/login') }) }} className='text-sm text-blue-600 underline'>Logout</button>
-                    </>
-                    :
-                    <>
-                        <Link className='text-sm text-blue-600 underline' to={'/login'}>Login</Link>
-                        <Link className='text-sm text-blue-600 underline' to={'/register'}>Register New Account</Link>
-                    </>
-            }
+          <nav className='custom-navbar'>
+  {
+    userLoggedIn
+      ?
+      <button 
+        onClick={() => { doSignOut().then(() => { navigate('/login') }) }} 
+        className='custom-nav-button'
+      >
+        Logout
+      </button>
+      :
+      <>
+       <button class="custom-button login-button">
+  <Link className="custom-nav-link" to="/login">Login</Link>
+</button>
+<button class="custom-button signup-button">
+  <Link className="custom-nav-link" to="/register">Sign up</Link>
+</button>
 
-        </nav>
+      </>
+  }
+</nav>
+
         </Navbar.Collapse>
       </Container>
     </Navbar>

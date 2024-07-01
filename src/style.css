@@ -82,7 +82,7 @@ button:focus {
 
 .navbar {
   border: 1px solid black;
-  background-color: #0f46d0;
+  background-color: #3866db;
   position: fixed !important;
   transition: all 0.3s ease-out 0s !important;
   padding: 0.3rem 2rem !important;
@@ -842,6 +842,7 @@ button:focus {
 }
 
 .service2-heading {
+  margin-top: 150px;
 font-weight: bold;
   font-size: 5em;
   color: #ffffff; /* Dark text color */
@@ -1107,107 +1108,244 @@ font-weight: bold;
 
 
 
-/* For sign up page */
-/* styles.css */
-/* Register Container */
+
+
+
+/* For COntact us section */
+/* Projects.css */
+.project-section {
+  background-color: #1e1e1e;
+  padding: 60px 0; /* More padding for better spacing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure it takes the full height of the screen */
+}
+
+.project-container {
+  background-color: #292929;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 600px; /* Constrain the width for better readability */
+  text-align: center;
+  color: #fff;
+}
+
+.project-heading {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.project-heading .purple {
+  color: #a104d6;
+}
+
+.contact-list {
+  color: #fff;
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0 auto;
+  text-align: left; /* Align text to left for better readability */
+}
+
+.contact-list li {
+  margin: 10px 0;
+}
+
+.contact-link {
+  color: #4dc3ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #ff6347;
+}
+
+
+/* Loginj button and sign up buttoin  */
+.custom-button {
+  background-color: #007BFF; /* Blue background */
+  color: white; /* White text */
+  border: none; /* Remove default border */
+  padding: 10px 20px; /* Padding inside the button */
+  margin: 10px; /* Margin around the button */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Cursor changes to pointer on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+.custom-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly larger on hover */
+}
+
+.custom-button:active {
+  background-color: #004080; /* Even darker blue when clicked */
+  transform: scale(1); /* Return to original size */
+}
+
+.custom-button .custom-nav-link {
+  color: inherit; /* Inherit color from button */
+  text-decoration: none; /* Remove underline from link */
+  display: block; /* Make link fill the button */
+}
+
+.custom-button.login-button {
+  background-color: #28a745; /* Green background for login */
+}
+
+.custom-button.login-button:hover {
+  background-color: #218838; /* Darker green on hover for login */
+}
+
+.custom-button.login-button:active {
+  background-color: #1e7e34; /* Even darker green on click for login */
+}
+
+.custom-button.signup-button {
+  background-color: #17a2b8; /* Cyan background for signup */
+}
+
+.custom-button.signup-button:hover {
+  background-color: #138496; /* Darker cyan on hover for signup */
+}
+
+.custom-button.signup-button:active {
+  background-color: #117a8b; /* Even darker cyan on click for signup */
+}
+
+
+/* Container for the registration form */
 .register-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: white;
-}
-
-/* Register Form Container */
-.register-form-container {
-  width: 400px;
+  background-color: #f7f8fc;
   padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Register Heading */
+/* Container for the form */
+.register-form-container {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Header section */
 .register-heading {
   text-align: center;
   margin-bottom: 20px;
 }
 
-/* Register Title */
-.register-title {
+.register-title h3 {
+  color: #4a4a4a;
   font-size: 24px;
-  font-weight: bold;
-  color: #333333;
+  margin: 0;
+  font-weight: 500;
 }
 
-/* Register Form */
+/* Form styling */
 .register-form {
   display: flex;
   flex-direction: column;
 }
 
-/* Register Input Group */
+/* Input group styling */
 .register-input-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
-/* Register Input Label */
 .register-input-group label {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333333;
+  display: block;
+  margin-bottom: 5px;
+  color: #5a5a5a;
+  font-weight: 500;
 }
 
-/* Register Input */
 .register-input-group input {
   width: 100%;
   padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  outline: none;
-}
-
-/* Error Message */
-.error-message {
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  box-sizing: border-box;
   font-size: 14px;
-  color: #ff0000;
-  margin-top: 5px;
-}
-
-/* Register Submit Button */
-.register-submit-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  color: #333;
   outline: none;
+  transition: border 0.2s;
 }
 
-/* Disabled Register Submit Button */
-.register-submit-button.disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
+.register-input-group input:focus {
+  border-color: #5e72e4;
 }
 
-/* Register Login Link */
-.register-login-link {
-  margin-top: 10px;
+/* Error message styling */
+.error-message {
+  color: #ff4d4f;
+  font-size: 14px;
+  margin-bottom: 15px;
   text-align: center;
 }
 
-/* Login Link */
-.login-link {
-  color: #007bff;
-  text-decoration: none;
+/* Submit button styling */
+.register-submit-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #5e72e4;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-/* Hover Effect on Login Link */
-.login-link:hover {
-  text-decoration: underline;
+.register-submit-button:disabled,
+.register-submit-button.disabled {
+  background-color: #dcdcdc;
+  cursor: not-allowed;
+}
+
+.register-submit-button:hover:not(.disabled):not(:disabled) {
+  background-color: #4a5bdc;
+}
+
+/* Link to login page */
+.register-login-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.register-login-link .login-link {
+  color: #5e72e4;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.register-login-link .login-link:hover {
+  color: #4a5bdc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .register-form-container {
+      padding: 15px;
+      width: 90%;
+  }
+
+  .register-title h3 {
+      font-size: 20px;
+  }
 }
