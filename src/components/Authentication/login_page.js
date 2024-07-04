@@ -1,42 +1,36 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { Navigate, Link } from 'react-router-dom';
-import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../firebase/auth';
+import { doSignInWithEmailAndPassword, doSignInWithGoogle, doSignInWithPhoneNumber } from '../firebase/auth'; // Adjust import based on your Firebase authentication setup
 import { useAuth } from '../contexts/authContext';
+import google_logo from "../../Assets/google.png";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const { userLoggedIn } = useAuth();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState(''); // New state for phone number
     const [isSigningIn, setIsSigningIn] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
-    const [redirectTo, setRedirectTo] = useState(null); // State to handle redirection
+    const [redirectTo, setRedirectTo] = useState(null);
 
     useEffect(() => {
         if (userLoggedIn) {
-            const adminEmail = 'admin@gmail.com'; // Replace with actual admin email or get dynamically
-            if (userLoggedIn.email === adminEmail) {
-                setRedirectTo('/admin'); // Redirect to admin page if admin
-            } else {
-                setRedirectTo('/home'); // Redirect to home page otherwise
-            }
+            setRedirectTo('/home'); // Redirect all users to the home page
         }
     }, [userLoggedIn]);
 
-    const onSubmit = async (e) => {
+    const onSubmitEmailPassword = async (e) => {
         e.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
             try {
                 await doSignInWithEmailAndPassword(email, password);
-                // Redirect on successful login
-                
                 setRedirectTo('/home');
             } catch (error) {
                 setIsSigningIn(false);
-                setErrorMessage(error.message);
+                toast.error(error.message);
             }
         }
     };
@@ -47,28 +41,42 @@ const Login = () => {
             setIsSigningIn(true);
             try {
                 await doSignInWithGoogle();
-                // Handle successful Google sign-in, then redirect
                 setRedirectTo('/home');
             } catch (error) {
                 setIsSigningIn(false);
-                setErrorMessage(error.message);
+                toast.error(error.message);
             }
         }
     };
 
-    // Redirect if redirectTo is set
+    const onSubmitPhoneNumber = async (e) => {
+        e.preventDefault();
+        if (!isSigningIn) {
+            setIsSigningIn(true);
+            try {
+                // Implement the function for signing in with phone number
+                await doSignInWithPhoneNumber(phoneNumber);
+                setRedirectTo('/home');
+            } catch (error) {
+                setIsSigningIn(false);
+                toast.error(error.message);
+            }
+        }
+    };
+
     if (redirectTo) {
         return <Navigate to={redirectTo} replace={true} />;
     }
 
     return (
         <div>
+            <ToastContainer />
             <main className="login-container">
                 <div className="login-content">
                     <div className="login-header">
                         <h3 className="heading">Welcome Back</h3>
                     </div>
-                    <form onSubmit={onSubmit} className="space-y-5">
+                    <form onSubmit={onSubmitEmailPassword} className="space-y-5">
                         <div>
                             <label className="login-label">Email</label>
                             <input
@@ -93,18 +101,38 @@ const Login = () => {
                             />
                         </div>
 
-                        {errorMessage && (
-                            <span className="error-message">{errorMessage}</span>
-                        )}
+                        <button
+                            type="submit"
+                            disabled={isSigningIn}
+                            className={`submit-btn ${isSigningIn ? 'disabled' : ''}`}
+                        >
+                            {isSigningIn ? 'Signing In...' : 'Sign In with Email'}
+                        </button>
+                    </form>
+
+                    {/* Add the phone number login section */}
+                    <form onSubmit={onSubmitPhoneNumber} className="space-y-5">
+                        <div>
+                            <label className="login-label">Phone Number</label>
+                            <input
+                                type="tel"
+                                autoComplete="tel"
+                                required
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                className="login-input"
+                            />
+                        </div>
 
                         <button
                             type="submit"
                             disabled={isSigningIn}
                             className={`submit-btn ${isSigningIn ? 'disabled' : ''}`}
                         >
-                            {isSigningIn ? 'Signing In...' : 'Sign In'}
+                            {isSigningIn ? 'Signing In...' : 'Sign In with Phone Number'}
                         </button>
                     </form>
+
                     <p className="link-container">
                         Don't have an account? <Link to={'/register'} className="link">Sign up</Link>
                     </p>
@@ -118,9 +146,7 @@ const Login = () => {
                         onClick={onGoogleSignIn}
                         className={`google-btn ${isSigningIn ? 'disabled' : ''}`}
                     >
-                        <svg className="google-icon" viewBox="0 0 48 48" fill="#4285F4" xmlns="http://www.w3.org/2000/svg">
-                            {/* Google SVG icon */}
-                        </svg>
+                        <img src={google_logo} className="google-icon" alt="Google Logo" />
                         {isSigningIn ? 'Signing In...' : 'Continue with Google'}
                     </button>
                 </div>

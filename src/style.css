@@ -1351,6 +1351,13 @@ font-weight: bold;
 }
 
 
+/* Google icon on login form */
+.google-icon {
+  width: 24px; /* Set desired width */
+  height: 24px; /* Set desired height */
+  margin-right: 10px; /* Optional: Add space between icon and text */
+}
+
 
 
 /* Data display for it services */
