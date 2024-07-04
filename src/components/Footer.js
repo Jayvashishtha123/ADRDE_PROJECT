@@ -17,7 +17,7 @@ function Footer() {
           <h3>Developed for DRDO</h3>
         </Col>
         <Col md="4" className="footer-copywright">
-          <h3>© {year} Defence Research and Development Organisation</h3>
+          <h3>© {year} Defence Research and Development Organisation DRDO</h3>
         </Col>
         <Col md="4" className="footer-body">
           <ul className="footer-icons">
