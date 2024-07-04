@@ -33,16 +33,16 @@ cd online-requirement-portal
 
 ### Screenshots
 
-![screenshot01](Screenchots/screensht01.png)
-![screenshot01](Screenchots/scrnsht02.png)
-![screenshot01](Screenchots/scrnsht03.png)
-![screenshot01](Screenchots/scrnsht04.png)
-![screenshot01](Screenchots/scrnsht05.png)
-![screenshot01](Screenchots/scrnsht06.png)
-![screenshot01](Screenchots/scrnsht07.png)
-![screenshot01](Screenchots/scrnsht08.png)
-![screenshot01](Screenchots/scrnsht09.png)
+![screenshot01](Screenshots/screensht01.png)
+![screenshot01](Screenshots/scrnsht02.png)
+![screenshot01](Screenshots/scrnsht03.png)
+![screenshot01](Screenshots/scrnsht04.png)
+![screenshot01](Screenshots/scrnsht05.png)
+![screenshot01](Screenshots/scrnsht06.png)
+![screenshot01](Screenshots/scrnsht07.png)
+![screenshot01](Screenshots/scrnsht08.png)
+![screenshot01](Screenshots/scrnsht09.png)
 
-[![Video Thumbnail]()](Screenchots/scrnrcd01.mp4)
-[![Video Thumbnail]()](Screenchots/scrnrcd01.mp4)
+[![Video Thumbnail]()](Screenshots/scrnrcd01.mp4)
+[![Video Thumbnail]()](Screenshots/scrnrcd01.mp4)
 
