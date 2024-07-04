@@ -52,7 +52,7 @@ function Service3() {
   }, []);
 
   const bookingDeadline = new Date();
-  bookingDeadline.setHours(22, 45, 0, 0); // Set deadline to 10:45 PM
+  bookingDeadline.setHours(23, 45, 0, 0); // Set deadline to 10:45 PM
   const isBookingAllowed = currentTime < bookingDeadline;
 
   return (

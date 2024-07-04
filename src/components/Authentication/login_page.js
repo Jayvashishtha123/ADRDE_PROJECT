@@ -1,6 +1,7 @@
+// Login.js
 import React, { useState, useEffect } from 'react';
 import { Navigate, Link } from 'react-router-dom';
-import { doSignInWithEmailAndPassword, doSignInWithGoogle, doSignInWithPhoneNumber } from '../firebase/auth'; // Adjust import based on your Firebase authentication setup
+import { doSignInWithEmailAndPassword, doSignInWithGoogle, doSignInWithPhoneNumber } from '../firebase/auth';
 import { useAuth } from '../contexts/authContext';
 import google_logo from "../../Assets/google.png";
 import { toast, ToastContainer } from 'react-toastify';
@@ -8,16 +9,15 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const { userLoggedIn } = useAuth();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState(''); // New state for phone number
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [isSigningIn, setIsSigningIn] = useState(false);
     const [redirectTo, setRedirectTo] = useState(null);
 
     useEffect(() => {
         if (userLoggedIn) {
-            setRedirectTo('/home'); // Redirect all users to the home page
+            setRedirectTo('/home');
         }
     }, [userLoggedIn]);
 
@@ -49,21 +49,7 @@ const Login = () => {
         }
     };
 
-    const onSubmitPhoneNumber = async (e) => {
-        e.preventDefault();
-        if (!isSigningIn) {
-            setIsSigningIn(true);
-            try {
-                // Implement the function for signing in with phone number
-                await doSignInWithPhoneNumber(phoneNumber);
-                setRedirectTo('/home');
-            } catch (error) {
-                setIsSigningIn(false);
-                toast.error(error.message);
-            }
-        }
-    };
-
+   
     if (redirectTo) {
         return <Navigate to={redirectTo} replace={true} />;
     }
@@ -110,28 +96,7 @@ const Login = () => {
                         </button>
                     </form>
 
-                    {/* Add the phone number login section */}
-                    <form onSubmit={onSubmitPhoneNumber} className="space-y-5">
-                        <div>
-                            <label className="login-label">Phone Number</label>
-                            <input
-                                type="tel"
-                                autoComplete="tel"
-                                required
-                                value={phoneNumber}
-                                onChange={(e) => setPhoneNumber(e.target.value)}
-                                className="login-input"
-                            />
-                        </div>
-
-                        <button
-                            type="submit"
-                            disabled={isSigningIn}
-                            className={`submit-btn ${isSigningIn ? 'disabled' : ''}`}
-                        >
-                            {isSigningIn ? 'Signing In...' : 'Sign In with Phone Number'}
-                        </button>
-                    </form>
+                    
 
                     <p className="link-container">
                         Don't have an account? <Link to={'/register'} className="link">Sign up</Link>

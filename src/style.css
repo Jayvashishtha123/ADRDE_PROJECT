@@ -552,13 +552,34 @@ button:focus {
 /* --------- */
 /* About */
 /* --------- */
-
+/* About Section */
 .about-section {
   position: relative !important;
   padding-top: 150px !important;
   padding-bottom: 30px !important;
-  background-image: var(--section-background-color) !important;
+  background-image: linear-gradient(135deg, #434343 0%, black 100%) !important; /* Gradient background */
   color: rgb(255, 255, 255) !important;
+  overflow: hidden; /* Hide overflow for animations */
+}
+
+/* Animated background effect */
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: -1; /* Place behind content */
+  pointer-events: none; /* Make it non-interactive */
+  animation: gradientShift 15s ease infinite; /* Animated gradient */
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .tech-icons {
@@ -573,7 +594,9 @@ button:focus {
   display: table !important;
   box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137) !important;
   overflow: hidden !important;
-  transition: all 0.4s ease 0s !important;
+  transition: all 0.4s ease !important;
+  background: rgba(255, 255, 255, 0.1); /* Light overlay */
+  backdrop-filter: blur(10px); /* Background blur */
 }
 
 @media (max-width: 767px) {
@@ -583,10 +606,11 @@ button:focus {
 }
 
 .tech-icons:hover {
-  transform: scale(1.05) !important;
-  overflow: hidden !important;
+  transform: scale(1.1) !important;
   border: 2.2px solid rgba(162, 15, 220, 0.883) !important;
+  box-shadow: 0 0 15px rgba(162, 15, 220, 0.5); /* Glowing effect */
 }
+
 .tech-icon-images {
   padding: 20px !important;
   line-height: 1.6 !important;
@@ -596,12 +620,66 @@ button:focus {
   border: none !important;
   color: white !important;
   background-color: transparent !important;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.quote-card-view:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
+}
+
+.quote-card-view::before {
+  content: '';
+  position: absolute;
+  top: -75px;
+  left: -75px;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  z-index: -1;
+  transition: all 0.4s ease; /* Smooth transition for animation */
+}
+
+.quote-card-view:hover::before {
+  top: -25px;
+  left: -25px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.2); /* Enlarged circle on hover */
 }
 
 .about-activity {
   list-style: none !important;
   text-align: left !important;
   padding-left: 1px !important;
+  margin: 0;
+  padding: 0;
+}
+
+.about-activity li {
+  position: relative;
+  padding-left: 20px !important;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: rgba(255, 255, 255, 0.9); /* Softer white */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.about-activity li::before {
+  content: "✔"; /* Add a check mark */
+  position: absolute;
+  left: 0;
+  color: #a20fdd;
+  font-size: 1.2em;
+}
+
+.about-activity li:hover {
+  color: #a20fdd; /* Change color on hover */
+  text-shadow: 0 0 8px #a20fdd; /* Glow effect on hover */
 }
 
 @media (max-width: 767px) {
@@ -609,10 +687,12 @@ button:focus {
     padding-top: 0 !important;
   }
 }
+
 .like-item {
   padding-top: 10px !important;
   font-size: 1.1em !important;
-  font-family: sans-serif !important;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  color: rgba(255, 255, 255, 0.85); /* Softer white */
 }
 
 .like-btn {
@@ -621,7 +701,9 @@ button:focus {
   padding: 0.25rem 0.98rem !important;
   border-radius: 5px !important;
   line-height: 1.4 !important;
-  transition: 0.3s ease !important;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+  position: relative;
+  overflow: hidden;
 }
 
 .like-btn:hover {
@@ -630,18 +712,30 @@ button:focus {
   border-color: #a24dd386 !important;
 }
 
-.animate-like {
-  animation-name: likeAnimation;
-  animation-fill-mode: forwards;
-  animation-duration: 0.85s;
+.like-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1); /* Light overlay */
+  transform: skewX(-45deg); /* Skew for diagonal effect */
+  transition: all 0.5s ease; /* Smooth transition */
+  z-index: -1; /* Place behind content */
 }
+
+.like-btn:hover::before {
+  left: 100%; /* Slide effect on hover */
+}
+
+.animate-like {
+  animation: likeAnimation 0.85s forwards; /* Added keyframes directly */
+}
+
 @keyframes likeAnimation {
-  0% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1.5); }
+  100% { transform: scale(1); }
 }
 
 .fork-btn {
@@ -655,6 +749,9 @@ button:focus {
   padding: 0.25rem 1.1rem !important;
   vertical-align: middle !important;
   text-align: center !important;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
 }
 
 .fork-btn-inner:hover {
@@ -662,17 +759,23 @@ button:focus {
   background-color: #ffffff86 !important;
   border-color: #dddddd86 !important;
 }
+
 .fork-btn-inner::after {
-  display: none !important;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1); /* Light overlay */
+  transform: skewX(-45deg); /* Skew for diagonal effect */
+  transition: all 0.5s ease; /* Smooth transition */
+  z-index: -1; /* Place behind content */
 }
 
-
-
-
-
-
-
-
+.fork-btn-inner:hover::after {
+  left: 100%; /* Slide effect on hover */
+}
 
 
 
@@ -762,36 +865,45 @@ button:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Set the height to the full viewport height */
-  background-color: #0888af; /* Light background color */
+  min-height: 100vh; /* Ensure full viewport height */
+  background: linear-gradient(135deg, #00b4db, #0083b0); /* Vibrant background gradient */
+  padding: 60px 20px; /* Add padding to avoid overlap */
+  position: relative;
+  box-sizing: border-box; /* Include padding and border in element's width and height */
 }
 
 .service1-heading {
   font-weight: bold;
-  font-size: 5em;
-  color: #ffffff; /* Dark text color */
+  font-size: 3em; /* Adjusted font size for better responsiveness */
+  color: #ffffff; /* White text color */
   margin-bottom: 20px;
+  animation: fadeInDown 1s ease-out; /* Fade-in animation */
+  text-align: center; /* Center align text */
 }
 
 .service1-description {
-  color: #ffffff; /* Medium text color */
+  color: #ffffff; /* White text color */
   text-align: center;
   max-width: 600px;
   margin-bottom: 30px;
+  padding: 0 20px; /* Add padding for better readability */
+  animation: fadeIn 1.5s ease-out; /* Fade-in animation */
 }
 
 .service1-form {
   width: 100%;
-  max-width: 400px; /* Limit the form width */
-  background-color: #fff; /* White background color */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
-  transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+  max-width: 400px;
+  background-color: #ffffff; /* White background color */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+  z-index: 1; /* Ensure form stays above background */
+  animation: scaleUp 0.8s ease-out; /* Scale-up animation */
 }
 
 .service1-form:hover {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
 }
 
 .service1-form-group {
@@ -799,36 +911,96 @@ button:focus {
 }
 
 .service1-label {
-  color: #555; /* Darker text color */
+  color: #333; /* Darker text color for better contrast */
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .service1-input,
 .service1-select {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 16px;
+  transition: border 0.3s ease; /* Smooth border transition */
+}
+
+.service1-input:focus,
+.service1-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2); /* Focus shadow */
+  outline: none;
 }
 
 .service1-button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth transition for button color */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
 .service1-button:hover {
-  background-color: #0056b3; /* Darker color on hover */
+  background-color: #0056b3;
+  transform: translateY(-3px); /* Lift effect on hover */
 }
 
+.service1-button:active {
+  transform: translateY(0); /* Reset lift effect on click */
+}
+
+/* Keyframes for animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .service1-heading {
+    font-size: 2.5em; /* Adjust heading size for smaller screens */
+  }
+
+  .service1-form {
+    padding: 20px;
+  }
+
+  .service1-button {
+    font-size: 14px; /* Adjust button text size for smaller screens */
+  }
+}
 
 
 /* Service2.css */
@@ -837,37 +1009,46 @@ button:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Set the height to the full viewport height */
-  background-color: #0888af; /* Light background color */
+  min-height: 100vh; /* Ensure full height without overflow */
+  background: linear-gradient(135deg, #00b4db, #0083b0); /* More vibrant background gradient */
+  padding: 60px 20px; /* Add padding to avoid overlap */
+  position: relative;
+  box-sizing: border-box; /* Include padding and border in element's width and height */
 }
 
 .service2-heading {
-  margin-top: 150px;
-font-weight: bold;
-  font-size: 5em;
-  color: #ffffff; /* Dark text color */
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: 3em; /* Adjusted for better responsiveness */
+  color: #ffffff; /* Ensure good contrast */
   margin-bottom: 20px;
+  animation: fadeInDown 1s ease-out; /* Adding fade-in animation */
+  text-align: center; /* Center align text */
 }
 
 .service2-description {
-  color: #ffffff; /* Medium text color */
+  color: #ffffff;
   text-align: center;
   max-width: 600px;
   margin-bottom: 30px;
+  padding: 0 20px; /* Add padding for better readability */
+  animation: fadeIn 1.5s ease-out; /* Adding fade-in animation */
 }
 
 .service2-form {
   width: 100%;
-  max-width: 400px; /* Limit the form width */
-  background-color: #fff; /* White background color */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
-  transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+  max-width: 400px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Increase shadow effect */
+  transition: box-shadow 0.3s ease;
+  z-index: 1; /* Ensure form stays above background */
+  animation: scaleUp 0.8s ease-out; /* Adding scale-up animation */
 }
 
 .service2-form:hover {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
 }
 
 .service2-form-group {
@@ -875,125 +1056,254 @@ font-weight: bold;
 }
 
 .service2-label {
-  color: #555; /* Darker text color */
+  color: #333; /* Darker text color for better contrast */
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .service2-input,
 .service2-select {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 16px;
+  transition: border 0.3s ease; /* Adding smooth border transition */
+}
+
+.service2-input:focus,
+.service2-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2); /* Adding focus shadow */
+  outline: none;
 }
 
 .service2-button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth transition for button color */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Adding smooth transitions */
 }
 
 .service2-button:hover {
-  background-color: #0056b3; /* Darker color on hover */
+  background-color: #0056b3;
+  transform: translateY(-3px); /* Slightly lift the button on hover */
+}
+
+.service2-button:active {
+  transform: translateY(0); /* Reset the lift on click */
+}
+
+/* Keyframes for animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .service2-heading {
+    font-size: 2.5em; /* Adjust heading size for smaller screens */
+  }
+
+  .service2-form {
+    padding: 20px;
+  }
+
+  .service2-button {
+    font-size: 14px; /* Adjust button text size for smaller screens */
+  }
 }
 
 
-/* Service3 container */
+/* Service3.css */
+
+/* Container styling */
 .service3-container {
-  position: relative; /* Ensure relative positioning */
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  background-color: #0f3057; /* Updated background color with a darker shade */
-  min-height: 100vh;
+  padding: 60px 20px; /* Increased padding for better spacing */
+  background-color: #0f3057; /* Darker background color */
+  min-height: 100vh; /* Full viewport height */
 }
 
-/* Heading */
+/* Heading styling */
 .service3-heading {
-  font-size: 5em;
+  font-size: 4em; /* Adjusted font size for better responsiveness */
   color: #ffffff; /* White text color */
   margin-bottom: 20px;
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for a subtle effect */
+  text-align: center; /* Center align text */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for depth */
+  animation: slideInDown 1s ease-out; /* Slide-in animation */
 }
 
-.service3-notice{
+/* Notice styling */
+.service3-notice {
   color: white;
-  font-size: 1rem;
+  font-size: 1.2rem; /* Increased font size for better visibility */
   font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
 }
-/* Description */
+
+/* Description styling */
 .service3-description {
   color: #ffffff; /* White text color */
   text-align: center;
   max-width: 600px;
   margin-bottom: 30px;
   font-size: 1.2rem; /* Increased font size for better readability */
+  animation: slideInUp 1s ease-out; /* Slide-in animation */
 }
 
-/* Form */
+/* Form styling */
 .service3-form {
   width: 100%;
   max-width: 400px;
   background-color: #f8f9fa; /* Lighter background color */
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increased shadow for a prominent effect */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+  animation: scaleUp 0.8s ease-out; /* Scale-up animation */
 }
 
 .service3-form:hover {
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
 }
 
-/* Form group */
+/* Form group styling */
 .service3-form-group {
   margin-bottom: 20px;
 }
 
-/* Label */
+/* Label styling */
 .service3-label {
   color: #343a40; /* Dark text color */
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
-/* Input, select, textarea */
+/* Input, select, textarea styling */
 .service3-input,
 .service3-select,
 .service3-textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ced4da; /* Updated border color */
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
 }
 
-/* Button */
+.service3-input:focus,
+.service3-select:focus,
+.service3-textarea:focus {
+  border-color: #007bff; /* Focus border color */
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2); /* Focus shadow */
+}
+
+/* Button styling */
 .service3-button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease; /* Smooth transition for button color */
 }
 
 .service3-button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darker color on hover */
 }
+
+/* Keyframes for animations */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .service3-heading {
+    font-size: 3.5em; /* Adjust heading size for smaller screens */
+  }
+
+  .service3-form {
+    padding: 20px; /* Adjust form padding for smaller screens */
+  }
+}
+
+
 /* Clock */
 .service3-clock {
   position: absolute;
@@ -1011,63 +1321,97 @@ font-weight: bold;
 
 
 
-/* For Login page *//* Login Page Styles */
+/* Login Page Styles */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: white;
+  background: linear-gradient(to right, #007bff, #0056b3); /* Gradient background */
+  overflow: hidden; /* Ensure elements stay within the container */
+  position: relative; /* For animation effects */
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 20%, transparent 20%);
+  background-size: 50px 50px;
+  animation: animateBackground 30s linear infinite; /* Background animation */
 }
 
 .login-content {
   width: 400px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f7f7f7;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95); /* Slight transparency */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transform: scale(0.95); /* Initial scale for animation */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions */
+  z-index: 2; /* Ensure it stays above background animation */
 }
 
-.login-header {
-  text-align: center;
-  margin-bottom: 20px;
+.login-content:hover {
+  transform: scale(1); /* Scale up on hover */
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
 }
 
 .login-header h3 {
   color: #333;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  animation: fadeInDown 1s ease-in-out; /* Fade-in animation */
 }
 
 .login-input {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
+  padding: 15px;
+  margin-top: 15px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.login-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* Focus effect */
+  outline: none; /* Remove default outline */
 }
 
 .error-message {
   color: #ff0000;
   font-size: 14px;
   margin-top: 5px;
+  animation: shake 0.5s; /* Shake animation for errors */
 }
 
 .submit-btn {
   width: 100%;
-  padding: 10px;
+  padding: 15px;
   margin-top: 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: #007bff;
   color: #fff;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
 }
 
 .submit-btn:hover {
   background-color: #0056b3;
+  transform: translateY(-2px); /* Slightly move up on hover */
 }
 
 .link-container {
@@ -1079,10 +1423,12 @@ font-weight: bold;
   color: #007bff;
   text-decoration: none;
   font-size: 14px;
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transitions */
 }
 
 .link-container a:hover {
-  text-decoration: underline;
+  color: #0056b3;
+  text-shadow: 0 0 8px #0056b3; /* Glow effect on hover */
 }
 
 .or-divider {
@@ -1090,6 +1436,7 @@ font-weight: bold;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  position: relative;
 }
 
 .or-divider .line {
@@ -1103,6 +1450,42 @@ font-weight: bold;
   color: #999;
   font-size: 14px;
   font-weight: bold;
+  position: relative;
+  z-index: 1;
+  background: #fff; /* Ensure text is visible */
+  padding: 0 5px;
+}
+
+.or-divider::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  top: 50%;
+  left: 0;
+  z-index: 0;
+}
+
+/* Keyframes for background animation */
+@keyframes animateBackground {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-50%, -50%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Keyframes for heading fade-in */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Keyframes for shake effect */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
 }
 
 
@@ -1112,64 +1495,155 @@ font-weight: bold;
 
 
 /* For COntact us section */
+/* For Contact Us section */
 /* Projects.css */
+/* Section styling */
 .project-section {
-  background-color: #1e1e1e;
-  padding: 60px 0; /* More padding for better spacing */
+  background: linear-gradient(135deg, #e9e3e3 30%, #777272); /* Dark gray gradient */
+  padding: 60px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Ensure it takes the full height of the screen */
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Adding background animation */
+.project-section::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(220, 217, 217, 0.1) 20%, transparent 20%);
+  background-size: 60px 60px;
+  animation: moveBackground 20s linear infinite;
+  z-index: 1;
+}
+
+/* Container styling */
 .project-container {
-  background-color: #292929;
+  position: relative;
+  background: rgba(56, 56, 56, 0.95); /* Darker transparency for depth */
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  width: 100%;
-  max-width: 600px; /* Constrain the width for better readability */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  width: 90%;
+  max-width: 600px;
   text-align: center;
   color: #fff;
+  z-index: 2; /* Ensure it stays above the background animation */
+  transform: scale(1); /* Initial scale for animation */
+  transition: transform 0.5s ease-in-out; /* Smooth scale transition */
 }
 
+.project-container:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Heading styling */
 .project-heading {
+  font-size: 2em; /* Increase font size */
   color: #fff;
-  text-align: center;
   margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  animation: fadeIn 1.5s ease-in-out; /* Fade-in animation */
 }
 
 .project-heading .purple {
   color: #a104d6;
+  text-shadow: 0 0 10px #a104d6; /* Glow effect */
 }
 
+.project-heading:after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  background: #a104d6;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: expandLine 1s ease-in-out; /* Line animation */
+}
+
+/* List styling */
 .contact-list {
   color: #fff;
-  list-style-type: disc;
-  padding-left: 20px;
-  margin: 0 auto;
-  text-align: left; /* Align text to left for better readability */
+  list-style-type: none; /* Remove default bullet */
+  padding-left: 0;
+  margin: 20px auto;
+  text-align: left;
+  max-width: 400px;
 }
 
 .contact-list li {
-  margin: 10px 0;
+  margin: 15px 0;
+  position: relative;
+  padding-left: 30px;
+  font-size: 1.1em; /* Increase font size */
+  animation: slideIn 1s ease-out; /* Slide-in animation */
 }
 
+.contact-list li:before {
+  content: '▶'; /* Custom bullet */
+  color: #4dc3ff;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+}
+
+/* Link styling */
 .contact-link {
   color: #4dc3ff;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Add shadow transition */
 }
 
 .contact-link:hover {
   color: #ff6347;
+  text-shadow: 0 0 8px #ff6347; /* Glow effect on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Keyframes for background animation */
+@keyframes moveBackground {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-10%, -10%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Keyframes for heading fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Keyframes for line expansion */
+@keyframes expandLine {
+  from { width: 0; }
+  to { width: 50%; }
+}
+
+/* Keyframes for list item slide-in */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 
 /* Loginj button and sign up buttoin  */
 .custom-button {
-  background-color: #007BFF; /* Blue background */
-  color: white; /* White text */
+  background-color: #404f5f; /* Blue background */
+  color: rgb(239, 232, 232); /* White text */
   border: none; /* Remove default border */
   padding: 10px 20px; /* Padding inside the button */
   margin: 10px; /* Margin around the button */
@@ -1197,7 +1671,7 @@ font-weight: bold;
 }
 
 .custom-button.login-button {
-  background-color: #28a745; /* Green background for login */
+  background-color: #239835; /* Green background for login */
 }
 
 .custom-button.login-button:hover {
@@ -1209,15 +1683,15 @@ font-weight: bold;
 }
 
 .custom-button.signup-button {
-  background-color: #17a2b8; /* Cyan background for signup */
+  background-color: #2d2f2f; /* Cyan background for signup */
 }
 
 .custom-button.signup-button:hover {
-  background-color: #138496; /* Darker cyan on hover for signup */
+  background-color: #2b2f2f; /* Darker cyan on hover for signup */
 }
 
 .custom-button.signup-button:active {
-  background-color: #117a8b; /* Even darker cyan on click for signup */
+  background-color: #161818; /* Even darker cyan on click for signup */
 }
 
 
@@ -1227,19 +1701,105 @@ font-weight: bold;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f7f8fc;
+  background: linear-gradient(135deg, #eceff4, #f5f7fa);
   padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Adding animated background bubbles */
+.register-container::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(94, 114, 228, 0.2), transparent);
+  animation: moveBubbles 10s infinite linear;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes moveBubbles {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(20px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+/* Floating particles animation */
+@keyframes floatingParticles {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-10px) translateX(10px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+/* Floating particles */
+.particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: floatingParticles 4s infinite ease-in-out;
+  z-index: -1;
+}
+
+/* Specific particles */
+.particle:nth-child(1) {
+  width: 50px;
+  height: 50px;
+  top: 20%;
+  left: 25%;
+  animation-duration: 6s;
+}
+
+.particle:nth-child(2) {
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  left: 70%;
+  animation-duration: 8s;
+}
+
+.particle:nth-child(3) {
+  width: 40px;
+  height: 40px;
+  top: 80%;
+  left: 30%;
+  animation-duration: 10s;
+}
+
+.particle:nth-child(4) {
+  width: 20px;
+  height: 20px;
+  top: 40%;
+  left: 10%;
+  animation-duration: 12s;
+}
+
+.particle:nth-child(5) {
+  width: 60px;
+  height: 60px;
+  top: 60%;
+  left: 80%;
+  animation-duration: 14s;
 }
 
 /* Container for the form */
 .register-form-container {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9); /* Light overlay for glassmorphism effect */
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   width: 100%;
   max-width: 400px;
-  padding: 20px;
+  padding: 30px;
   box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Header section */
@@ -1249,10 +1809,24 @@ font-weight: bold;
 }
 
 .register-title h3 {
-  color: #4a4a4a;
+  color: #333;
   font-size: 24px;
   margin: 0;
-  font-weight: 500;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.register-title h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  height: 2px;
+  background: #5e72e4;
+  transform: translateX(-50%);
 }
 
 /* Form styling */
@@ -1275,18 +1849,21 @@ font-weight: bold;
 
 .register-input-group input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #dcdcdc;
-  border-radius: 4px;
+  border-radius: 8px;
   box-sizing: border-box;
   font-size: 14px;
   color: #333;
   outline: none;
-  transition: border 0.2s;
+  transition: border 0.2s, box-shadow 0.2s;
+  background: rgba(255, 255, 255, 0.6); /* Light overlay */
+  backdrop-filter: blur(5px);
 }
 
 .register-input-group input:focus {
   border-color: #5e72e4;
+  box-shadow: 0 0 8px rgba(94, 114, 228, 0.3);
 }
 
 /* Error message styling */
@@ -1299,15 +1876,17 @@ font-weight: bold;
 
 /* Submit button styling */
 .register-submit-button {
-  padding: 10px 15px;
+  padding: 12px 15px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: #5e72e4;
   color: #fff;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
 }
 
 .register-submit-button:disabled,
@@ -1318,6 +1897,24 @@ font-weight: bold;
 
 .register-submit-button:hover:not(.disabled):not(:disabled) {
   background-color: #4a5bdc;
+  transform: translateY(-3px);
+}
+
+.register-submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 300%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1); /* Light overlay */
+  transform: skewX(-45deg); /* Skew for diagonal effect */
+  transition: all 0.5s ease; /* Smooth transition */
+  z-index: -1; /* Place behind content */
+}
+
+.register-submit-button:hover::before {
+  left: 100%; /* Slide effect on hover */
 }
 
 /* Link to login page */
@@ -1341,15 +1938,14 @@ font-weight: bold;
 /* Responsive adjustments */
 @media (max-width: 600px) {
   .register-form-container {
-      padding: 15px;
-      width: 90%;
+    padding: 20px;
+    width: 90%;
   }
 
   .register-title h3 {
-      font-size: 20px;
+    font-size: 20px;
   }
 }
-
 
 /* Google icon on login form */
 .google-icon {
@@ -1361,37 +1957,186 @@ font-weight: bold;
 
 
 /* Data display for it services */
+/* Container for data display */
+/* Container for data display */
 .data-display-container {
   margin: 30px;
   padding: 20px;
   padding-top: 40px;
   border: 1px solid #db6262;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  border-radius: 10px;
+  background-color: #fff; /* White for a cleaner look */
   min-height: 100vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+  overflow: hidden; /* Ensure content doesn't overflow */
 }
 
+.data-display-container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
+
+/* Heading styles with dynamic animation */
+.data-display-heading {
+  font-size: 2em;
+  color: #db6262; /* Match color with border */
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #db6262;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  animation: fadeIn 1s ease-in-out; /* Add fade-in animation */
+}
+
+.data-display-heading:before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: #db6262;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Animation for heading */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Styling for the table */
 .data-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for table */
+  transition: all 0.3s ease; /* Smooth transition for all changes */
+  animation: slideIn 1s ease-in-out; /* Add slide-in animation */
 }
 
-.data-table th, .data-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
+/* Header cells with dynamic styling */
 .data-table th {
-  background-color: #f2f2f2;
+  background-color: #f4b6b6; /* Soft red/pinkish color */
   color: #333;
+  padding: 15px 10px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid #db6262; /* Matching border for header */
+  text-transform: uppercase; /* Uppercase for better readability */
+  letter-spacing: 0.1em; /* Spacing for better readability */
+  position: sticky; /* Sticky header */
+  top: 0;
+  z-index: 2; /* Ensure it stays above other rows */
 }
 
+/* Data cells with hover effects and animations */
+.data-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  color: #555;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Alternate row coloring with animation */
 .data-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f9f9f9; /* Light gray for even rows */
+  animation: fadeInRow 0.5s ease-in-out; /* Fade-in for even rows */
 }
 
+.data-table tbody tr:nth-child(odd) {
+  background-color: #ffffff; /* White for odd rows for contrast */
+  animation: fadeInRow 0.6s ease-in-out; /* Fade-in for odd rows */
+}
+
+/* Animation for table rows */
+@keyframes fadeInRow {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Hover effect for rows with slight scaling */
 .data-table tbody tr:hover {
-  background-color: #ddd;
+  background-color: #ffdddd; /* Soft pink for row hover */
+  cursor: pointer; /* Pointer cursor to indicate interactivity */
+  transform: scale(1.02); /* Slightly enlarge on hover */
+}
+
+/* First cell (index/ID) styling for emphasis */
+.data-table td:first-child {
+  font-weight: bold;
+  background-color: #fefefe; /* Slightly different shade for first cell */
+  text-transform: capitalize; /* Capitalize for consistency */
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+/* Link styling with smooth transitions */
+.data-table a {
+  color: #db6262; /* Link color matching the theme */
+  text-decoration: none; /* No underline */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.data-table a:hover {
+  color: #ff7676; /* Slightly lighter red on hover */
+}
+
+/* Button styling for links or actions with animations */
+.data-table button {
+  background-color: #db6262;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.data-table button:hover {
+  background-color: #ff7676; /* Lighter red on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .data-table, .data-table thead, .data-table tbody, .data-table th, .data-table td, .data-table tr {
+    display: block;
+  }
+
+  .data-table tr {
+    margin-bottom: 15px;
+  }
+
+  .data-table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .data-table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+/* Focus state for accessibility */
+.data-table td:focus, .data-table th:focus {
+  outline: 3px solid #db6262;
+  outline-offset: -1px; /* Slightly inset */
 }

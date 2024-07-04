@@ -13,7 +13,7 @@ function Home() {
   // Function to generate the greeting message
   const generateGreetingMessage = () => {
     if (userLoggedIn && currentUser && currentUser.email) {
-      const userName = currentUser.email.substring(0, 5);
+      const userName = currentUser.email.split('@')[0];
       return (
         <>
           Hi {userName}!{" "}

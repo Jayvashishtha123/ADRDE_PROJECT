@@ -24,7 +24,7 @@ function DataDisplayIT() {
 
   return (
     <div className="data-display-container">
-      <h1>IT Related Service Requests</h1>
+      <h1 className="data-display-heading">IT Related Service Requests</h1>
       <table className="data-table">
         <thead>
           <tr>

@@ -24,7 +24,7 @@ function DataDisplayLB() {
 
   return (
     <div className="data-display-container">
-      <h1>Lunch Booking Data</h1>
+      <h1 className="data-display-heading">Lunch Booking Data</h1>
       <table className="data-table">
         <thead>
           <tr>

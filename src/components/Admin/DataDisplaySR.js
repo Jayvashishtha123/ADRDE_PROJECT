@@ -24,7 +24,7 @@ function DataDisplaySR() {
 
   return (
     <div className="data-display-container">
-      <h1>Safety Related Form Data</h1>
+      <h1 className="data-display-heading">Safety Related Form Data</h1>
       <table className="data-table">
         <thead>
           <tr>
