@@ -30,6 +30,4 @@ cd online-requirement-portal
 
 
 ## Screenshots
-
-![Screenshot 1](https://example.com/path/to/screenshot1.png)
-![Screenshot 2](https://example.com/path/to/screenshot2.png)
+![screenshot01](Screenchots/screensht01.png)
