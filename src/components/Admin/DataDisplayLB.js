@@ -9,8 +9,8 @@ function DataDisplayLB() {
     const fetchData = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "LunchBooking"));
-        const documents = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
+        const documents = querySnapshot.docs.map((doc, index) => ({
+          id: index + 1, // Assigning serial number (index + 1)
           ...doc.data(),
         }));
         setBookingData(documents);
@@ -28,7 +28,7 @@ function DataDisplayLB() {
       <table className="data-table">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Serial No.</th>
             <th>User Name</th>
             <th>Department</th>
             <th>Date</th>

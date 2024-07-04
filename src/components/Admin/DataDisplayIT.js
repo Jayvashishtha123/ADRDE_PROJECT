@@ -9,8 +9,8 @@ function DataDisplayIT() {
     const fetchData = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "ITRelated"));
-        const documents = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
+        const documents = querySnapshot.docs.map((doc, index) => ({
+          id: index + 1, // Assigning serial number (index + 1)
           ...doc.data(),
         }));
         setData(documents);
@@ -28,7 +28,7 @@ function DataDisplayIT() {
       <table className="data-table">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Serial No.</th>
             <th>User Name</th>
             <th>Department</th>
             <th>Available Items</th>

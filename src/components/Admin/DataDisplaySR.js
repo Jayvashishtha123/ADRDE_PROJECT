@@ -28,7 +28,7 @@ function DataDisplaySR() {
       <table className="data-table">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Serial No.</th>
             <th>User Name</th>
             <th>Department</th>
             <th>Equipment Type</th>
@@ -39,9 +39,9 @@ function DataDisplaySR() {
           </tr>
         </thead>
         <tbody>
-          {formData.map((formData) => (
+          {formData.map((formData, index) => (
             <tr key={formData.id}>
-              <td>{formData.id}</td>
+              <td>{index + 1}</td>
               <td>{formData.userName}</td>
               <td>{formData.department}</td>
               <td>{formData.equipmentType}</td>
