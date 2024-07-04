@@ -42,3 +42,7 @@ cd online-requirement-portal
 ![screenshot01](Screenchots/scrnsht07.png)
 ![screenshot01](Screenchots/scrnsht08.png)
 ![screenshot01](Screenchots/scrnsht09.png)
+
+[![Video Thumbnail]](Screenchots/scrnrcd01.mp4)
+[![Video Thumbnail]](Screenchots/scrnrcd01.mp4)
+
