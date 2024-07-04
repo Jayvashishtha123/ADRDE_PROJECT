@@ -1,5 +1,9 @@
-// Service1.js
 import React, { useState } from "react";
+import { db } from "../firebase/firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { useAuth } from "../contexts/authContext";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Service1() {
   const [userName, setUserName] = useState("");
@@ -7,33 +11,50 @@ function Service1() {
   const [availableItems, setAvailableItems] = useState("");
   const [requiredItems, setRequiredItems] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
+  const { currentUser } = useAuth(); // Assuming this hook gives you the current user info
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted!");
-    console.log("User Name:", userName);
-    console.log("Department:", department);
-    console.log("Available Items:", availableItems);
-    console.log("Required Items:", requiredItems);
-    console.log("Selected Option:", selectedOption);
-    // Reset form fields
-    setUserName("");
-    setDepartment("");
-    setAvailableItems("");
-    setRequiredItems("");
-    setSelectedOption("");
+
+    // Check if user is logged in
+    if (!currentUser) {
+      toast.error("Please login first!");
+      return;
+    }
+
+    try {
+      // Add form data to Firestore collection "ITRelated"
+      await addDoc(collection(db, "ITRelated"), {
+        userName,
+        department,
+        availableItems,
+        requiredItems,
+        selectedOption,
+        timestamp: new Date(),
+      });
+      toast.success("Form submitted successfully!");
+
+      // Reset form fields
+      setUserName("");
+      setDepartment("");
+      setAvailableItems("");
+      setRequiredItems("");
+      setSelectedOption("");
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast.error("There was an error submitting the form.");
+    }
   };
 
   return (
     <div className="service1-container">
+      <ToastContainer />
       <h1 className="service1-heading">IT & Related</h1>
       <p className="service1-description">
         This page contains information about IT related services.
       </p>
       <form className="service1-form" onSubmit={handleSubmit}>
-
-      <div className="service1-form-group">
+        <div className="service1-form-group">
           <label htmlFor="selectedOption" className="service1-label">
             Select Option:
           </label>
@@ -45,14 +66,12 @@ function Service1() {
             required
           >
             <option value="">Select an option</option>
-            <option value="Option 1">Cartridge</option>
-            <option value="Option 2">Printer</option>
-            <option value="Option 3">PC</option>
-            <option value="Option 3">MFM</option>
-            <option value="Option 3">Scanner</option>
-            <option value="Option 3">Others</option>
-
-
+            <option value="Cartridge">Cartridge</option>
+            <option value="Printer">Printer</option>
+            <option value="PC">PC</option>
+            <option value="MFM">MFM</option>
+            <option value="Scanner">Scanner</option>
+            <option value="Others">Others</option>
           </select>
         </div>
         <div className="service1-form-group">
@@ -81,7 +100,6 @@ function Service1() {
             required
           />
         </div>
-        
         <div className="service1-form-group">
           <label htmlFor="availableItems" className="service1-label">
             No. of Available Items:

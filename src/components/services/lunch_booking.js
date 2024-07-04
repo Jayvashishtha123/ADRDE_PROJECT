@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import DigitalClock from "react-digital-clock";
+import { db } from "../firebase/firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { useAuth } from "../contexts/authContext";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Service3() {
   const [userName, setUserName] = useState("");
@@ -8,11 +13,35 @@ function Service3() {
   const [mealType, setMealType] = useState("");
   const [specialRequests, setSpecialRequests] = useState("");
   const [currentTime, setCurrentTime] = useState(new Date());
+  const { currentUser } = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    alert("Form submitted successfully!");
+    if (!currentUser) {
+      toast.error("Please login first!");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "LunchBooking"), {
+        userName,
+        department,
+        date,
+        mealType,
+        specialRequests,
+        timestamp: new Date(),
+        userId: currentUser.uid,
+      });
+      toast.success("Form submitted successfully!");
+      setUserName("");
+      setDepartment("");
+      setDate("");
+      setMealType("");
+      setSpecialRequests("");
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast.error("There was an error submitting the form.");
+    }
   };
 
   useEffect(() => {
@@ -23,17 +52,17 @@ function Service3() {
   }, []);
 
   const bookingDeadline = new Date();
-  bookingDeadline.setHours(11, 0, 0, 0); // Set deadline to 11:00 AM
+  bookingDeadline.setHours(22, 45, 0, 0); // Set deadline to 10:45 PM
   const isBookingAllowed = currentTime < bookingDeadline;
 
   return (
     <div className="service3-container">
+      <ToastContainer />
       <h1 className="service3-heading">Lunch Booking</h1>
       <p className="service3-description">
         This page contains information about lunch booking services.
       </p>
       <div className="service3-clock">
-        {/* Displaying the digital clock */}
         <DigitalClock />
       </div>
       {isBookingAllowed ? (
@@ -84,13 +113,14 @@ function Service3() {
             <select
               className="service3-select"
               id="mealType"
-              value=                                             {mealType}
+              value={mealType}
               onChange={(e) => setMealType(e.target.value)}
               required
             >
               <option value="">Select meal type</option>
               <option value="vegetarian">Vegetarian</option>
-             
+              <option value="non-vegetarian">Non-Vegetarian</option>
+              <option value="vegan">Vegan</option>
             </select>
           </div>
           <div className="service3-form-group">
@@ -110,7 +140,7 @@ function Service3() {
         </form>
       ) : (
         <div className="service3-notice">
-          <p>Booking can only be done before 11:00 AM.</p>
+          <p>Booking can only be done before 10:45 PM.</p>
         </div>
       )}
     </div>

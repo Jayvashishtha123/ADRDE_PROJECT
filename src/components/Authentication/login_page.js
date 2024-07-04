@@ -1,6 +1,8 @@
+
+
 import React, { useState, useEffect } from 'react';
 import { Navigate, Link } from 'react-router-dom';
-import { doSignInWithEmailAndPassword, doSignInWithGoogle, doSendEmailVerification } from '../firebase/auth';
+import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../firebase/auth';
 import { useAuth } from '../contexts/authContext';
 
 const Login = () => {
@@ -10,11 +12,16 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [isSigningIn, setIsSigningIn] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [redirectTo, setRedirectTo] = useState(null); // State to handle redirection
 
     useEffect(() => {
         if (userLoggedIn) {
-            // Redirect to the home page if the user is already logged in
-            return <Navigate to={'/home'} replace={true} />;
+            const adminEmail = 'admin@gmail.com'; // Replace with actual admin email or get dynamically
+            if (userLoggedIn.email === adminEmail) {
+                setRedirectTo('/admin'); // Redirect to admin page if admin
+            } else {
+                setRedirectTo('/home'); // Redirect to home page otherwise
+            }
         }
     }, [userLoggedIn]);
 
@@ -22,37 +29,40 @@ const Login = () => {
         e.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
-            doSignInWithEmailAndPassword(email, password)
-                .then(() => {
-                    // Handle successful login
-                    // Optionally, you can also check if the user's email is verified
-                    // doSendEmailVerification();
-                })
-                .catch((error) => {
-                    // Handle login error
-                    setIsSigningIn(false);
-                    setErrorMessage(error.message);
-                });
+            try {
+                await doSignInWithEmailAndPassword(email, password);
+                // Redirect on successful login
+                
+                setRedirectTo('/home');
+            } catch (error) {
+                setIsSigningIn(false);
+                setErrorMessage(error.message);
+            }
         }
     };
 
-    const onGoogleSignIn = (e) => {
+    const onGoogleSignIn = async (e) => {
         e.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
-            doSignInWithGoogle()
-                .catch((error) => {
-                    // Handle Google sign-in error
-                    setIsSigningIn(false);
-                    setErrorMessage(error.message);
-                });
+            try {
+                await doSignInWithGoogle();
+                // Handle successful Google sign-in, then redirect
+                setRedirectTo('/home');
+            } catch (error) {
+                setIsSigningIn(false);
+                setErrorMessage(error.message);
+            }
         }
     };
 
+    // Redirect if redirectTo is set
+    if (redirectTo) {
+        return <Navigate to={redirectTo} replace={true} />;
+    }
+
     return (
         <div>
-            {userLoggedIn && (<Navigate to={'/home'} replace={true} />)}
-
             <main className="login-container">
                 <div className="login-content">
                     <div className="login-header">
@@ -66,7 +76,7 @@ const Login = () => {
                                 autoComplete="email"
                                 required
                                 value={email}
-                                onChange={(e) => { setEmail(e.target.value) }}
+                                onChange={(e) => setEmail(e.target.value)}
                                 className="login-input"
                             />
                         </div>
@@ -78,7 +88,7 @@ const Login = () => {
                                 autoComplete="current-password"
                                 required
                                 value={password}
-                                onChange={(e) => { setPassword(e.target.value) }}
+                                onChange={(e) => setPassword(e.target.value)}
                                 className="login-input"
                             />
                         </div>
@@ -105,16 +115,13 @@ const Login = () => {
                     </div>
                     <button
                         disabled={isSigningIn}
-                        onClick={(e) => { onGoogleSignIn(e) }}
+                        onClick={onGoogleSignIn}
                         className={`google-btn ${isSigningIn ? 'disabled' : ''}`}
                     >
-                              <svg className="google-icon" viewBox="0 0 48 48" fill="#4285F4" xmlns="http://www.w3.org/2000/svg">
-    <path d="M47.532 24.5528C47.532 22.9214 47.3997 21.2811 47.1175 19.6761H24.48V28.9181H37.4434C36.9055 31.8988 35.177 34.5356 32.6461 36.2111V42.2078H40.3801C44.9217 38.0278 47.532 31.8547 47.532 24.5528Z" fill="#4285F4" />
-    <path d="M24.48 48.0016C30.9529 48.0016 36.4116 45.8764 40.3888 42.2078L32.6549 36.2111C30.5031 37.675 27.7252 38.5039 24.4888 38.5039C18.2275 38.5039 12.9187 34.2798 11.0139 28.6006H3.03296V34.7825C7.10718 42.8868 15.4056 48.0016 24.48 48.0016Z" fill="#34A853" />
-    <path d="M11.0051 28.6006C9.99973 25.6199 9.99973 22.3922 11.0051 19.4115V13.2296H3.03298C-0.371021 20.0112 -0.371021 28.0009 3.03298 34.7825L11.0051 28.6006Z" fill="#FBBC04" />
-    <path d="M24.48 9.49932C27.9016 9.44641 31.2086 10.7339 33.6866 13.0973L40.5387 6.24523C36.2 2.17101 30.4414 -0.068932 24.48 0.00161733C15.4055 0.00161733 7.10718 5.11644 3.03296 13.2296L11.005 19.4115C12.901 13.7235 18.2187 9.49932 24.48 9.49932Z" fill="#EA4335" />
-</svg>
-{isSigningIn ? 'Signing In...' : 'Continue with Google'}
+                        <svg className="google-icon" viewBox="0 0 48 48" fill="#4285F4" xmlns="http://www.w3.org/2000/svg">
+                            {/* Google SVG icon */}
+                        </svg>
+                        {isSigningIn ? 'Signing In...' : 'Continue with Google'}
                     </button>
                 </div>
             </main>

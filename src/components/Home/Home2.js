@@ -16,7 +16,7 @@ function Home2() {
         </Row>
         <Row>
           <Col md={4}>
-            <Link to="/service1"> {/* Link to Service1 component */}
+            <Link to="/DataDisplayIT"> {/* Link to Service1 component */}
               <Card className="service-card">
                 <Card.Img variant="top" src={myImg} />
                 <Card.Body>
@@ -29,7 +29,7 @@ function Home2() {
             </Link>
           </Col>
           <Col md={4}>
-            <Link to="/service2"> {/* Link to Service2 component */}
+            <Link to="/DataDisplaySR"> {/* Link to Service2 component */}
               <Card className="service-card">
                 <Card.Img variant="top" src={myImg} />
                 <Card.Body>
@@ -42,7 +42,7 @@ function Home2() {
             </Link>
           </Col>
           <Col md={4}>
-            <Link to="/service3"> {/* Link to Service3 component */}
+            <Link to="/DataDisplayLB"> {/* Link to Service3 component */}
               <Card className="service-card">
                 <Card.Img variant="top" src={myImg} />
                 <Card.Body>

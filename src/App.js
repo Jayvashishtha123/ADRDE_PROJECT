@@ -1,3 +1,7 @@
+// App.Js Page:-
+
+
+
 import React, { useState, useEffect } from "react";
 import Preloader from "./components/Pre";
 import Navbar from "./components/Navbar";
@@ -13,8 +17,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate,
-  Switch
+  Navigate
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
@@ -23,43 +26,46 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthProvider } from "./components/contexts/authContext";
 import Login from "./components/Authentication/login_page";
 import Register from "./components/Authentication/SignUp_page";
+import DataDisplayIT from "./components/Admin/DataDisplayIT";
+import DataDisplayLB from "./components/Admin/DataDisplayLB";
+import DataDisplaySR from "./components/Admin/DataDisplaySR";
+
 
 function App() {
-  const [load, upadateLoad] = useState(true);
+  const [load, updateLoad] = useState(true);
 
-
-  
   useEffect(() => {
     const timer = setTimeout(() => {
-      upadateLoad(false);
+      updateLoad(false);
     }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    
     <Router>
-
-<Preloader load={load} />
+      <Preloader load={load} />
 
       <AuthProvider>
-      <div className="App" id={load ? "no-scroll" : "scroll"}>
-        <Navbar />
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login></Login>}></Route>
-          <Route path="/register" elemen={<Register/>}></Route>
-          <Route path="/project" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/service1" element={<Service1/>} />
-          <Route path="/service2" element={<Service2/>} />
-          <Route path="/service3" element={<Service3 />} />
-          <Route path="*" element={<Navigate to="/"/>} />
-        </Routes>
-        <Footer />
-      </div>
+        <div className={`App ${load ? "no-scroll" : "scroll"}`} id={load ? "no-scroll" : "scroll"}>
+          <Navbar />
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/project" element={<Projects />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/service1" element={<Service1 />} />
+            <Route path="/service2" element={<Service2 />} />
+            <Route path="/service3" element={<Service3 />} />
+            <Route path="/DataDisplayIT" element={<DataDisplayIT/>} />
+            <Route path="/DataDisplayLB" element={<DataDisplayLB/>} />
+            <Route path="/DataDisplaySR" element={<DataDisplaySR/>} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+          <Footer />
+        </div>
       </AuthProvider>
     </Router>
   );

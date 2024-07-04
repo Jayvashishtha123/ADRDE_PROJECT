@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import { Navigate, Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/authContext'
@@ -95,3 +96,4 @@ const Register = () => {
 }
 
 export default Register
+
