@@ -27,3 +27,9 @@ The Online Requirement Portal is an application built using React, Firebase Real
 ```bash
 git clone https://github.com/your-username/online-requirement-portal.git
 cd online-requirement-portal
+
+
+## Screenshots
+
+![Screenshot 1](https://example.com/path/to/screenshot1.png)
+![Screenshot 2](https://example.com/path/to/screenshot2.png)
