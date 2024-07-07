@@ -75,7 +75,7 @@ function NavBar() {
       ?
       <button 
         onClick={() => { doSignOut().then(() => { navigate('/login') }) }} 
-        className='custom-nav-button'
+        className='custom-button logout-button custom-nav-button'
       >
         Logout
       </button>
@@ -88,7 +88,7 @@ function NavBar() {
   <Link className="custom-nav-link" to="/register">Sign up</Link>
 </button>
 
-      </>
+     </>
   }
 </nav>
 

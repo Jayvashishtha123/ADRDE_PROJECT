@@ -4,6 +4,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { useAuth } from "../contexts/authContext";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 function Service1() {
   const [userName, setUserName] = useState("");
@@ -40,6 +41,7 @@ function Service1() {
       setAvailableItems("");
       setRequiredItems("");
       setSelectedOption("");
+
     } catch (error) {
       console.error("Error adding document: ", error);
       toast.error("There was an error submitting the form.");
@@ -129,6 +131,9 @@ function Service1() {
         <button type="submit" className="service1-button">
           Submit
         </button>
+        {/* <Link to="/MyrequestIT" className="service1-button">
+          View Previous Requests
+        </Link> */}
       </form>
     </div>
   );

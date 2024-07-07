@@ -1,25 +1,35 @@
-// Login.js
 import React, { useState, useEffect } from 'react';
 import { Navigate, Link } from 'react-router-dom';
-import { doSignInWithEmailAndPassword, doSignInWithGoogle, doSignInWithPhoneNumber } from '../firebase/auth';
+import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../firebase/auth';
 import { useAuth } from '../contexts/authContext';
 import google_logo from "../../Assets/google.png";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const Login = () => {
     const { userLoggedIn } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
     const [isSigningIn, setIsSigningIn] = useState(false);
     const [redirectTo, setRedirectTo] = useState(null);
+    const [userName, setUserName] = useState('');
 
     useEffect(() => {
-        if (userLoggedIn) {
-            setRedirectTo('/home');
-        }
-    }, [userLoggedIn]);
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUserName(user.displayName || user.email); // Get user's name or email
+                setRedirectTo('/home');
+            }
+        });
+    }, []);
+
+    // useEffect(() => {
+    //     if (redirectTo) {
+    //         toast.success(`Successfully logged in as ${userName}!`);
+    //     }
+    // }, [redirectTo, userName]);
 
     const onSubmitEmailPassword = async (e) => {
         e.preventDefault();
@@ -27,7 +37,10 @@ const Login = () => {
             setIsSigningIn(true);
             try {
                 await doSignInWithEmailAndPassword(email, password);
+               
                 setRedirectTo('/home');
+               
+
             } catch (error) {
                 setIsSigningIn(false);
                 toast.error(error.message);
@@ -49,9 +62,9 @@ const Login = () => {
         }
     };
 
-   
     if (redirectTo) {
         return <Navigate to={redirectTo} replace={true} />;
+
     }
 
     return (
@@ -95,8 +108,6 @@ const Login = () => {
                             {isSigningIn ? 'Signing In...' : 'Sign In with Email'}
                         </button>
                     </form>
-
-                    
 
                     <p className="link-container">
                         Don't have an account? <Link to={'/register'} className="link">Sign up</Link>

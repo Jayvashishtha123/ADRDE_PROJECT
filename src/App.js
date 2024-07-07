@@ -29,7 +29,7 @@ import Register from "./components/Authentication/SignUp_page";
 import DataDisplayIT from "./components/Admin/DataDisplayIT";
 import DataDisplayLB from "./components/Admin/DataDisplayLB";
 import DataDisplaySR from "./components/Admin/DataDisplaySR";
-
+import MyrequestIT from "./components/MyRequest/MyrequestIT"
 
 function App() {
   const [load, updateLoad] = useState(true);
@@ -62,6 +62,7 @@ function App() {
             <Route path="/DataDisplayIT" element={<DataDisplayIT/>} />
             <Route path="/DataDisplayLB" element={<DataDisplayLB/>} />
             <Route path="/DataDisplaySR" element={<DataDisplaySR/>} />
+            <Route path="/MyrequestIT" element={<MyrequestIT/>} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />

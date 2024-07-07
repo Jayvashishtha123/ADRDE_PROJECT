@@ -1,8 +1,8 @@
 html {
   --section-background-color: linear-gradient(
     to bottom left,
-    rgba(9, 228, 199, 0.582),
-    rgba(27, 186, 186, 0.904)
+    rgba(250, 250, 250, 0.582),
+    rgba(234, 239, 239, 0.904)
   );
 
   --image-gradient: linear-gradient(
@@ -1327,7 +1327,7 @@ button:focus {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to right, #007bff, #0056b3); /* Gradient background */
+  background: linear-gradient(to right, #ffffff, #ffffff); /* Gradient background */
   overflow: hidden; /* Ensure elements stay within the container */
   position: relative; /* For animation effects */
 }
@@ -1339,7 +1339,7 @@ button:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255,255,255,0.15) 20%, transparent 20%);
+  /* background: radial-gradient(circle, rgba(255,255,255,0.15) 20%, transparent 20%); */
   background-size: 50px 50px;
   animation: animateBackground 30s linear infinite; /* Background animation */
 }
@@ -1351,7 +1351,7 @@ button:focus {
   background: rgba(255, 255, 255, 0.95); /* Slight transparency */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
-  transform: scale(0.95); /* Initial scale for animation */
+  transform: scale(1); /* Initial scale for animation */
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions */
   z-index: 2; /* Ensure it stays above background animation */
 }
@@ -1517,7 +1517,7 @@ button:focus {
   left: -20%;
   width: 140%;
   height: 140%;
-  background: radial-gradient(circle, rgba(220, 217, 217, 0.1) 20%, transparent 20%);
+  /* background: radial-gradient(circle, rgba(220, 217, 217, 0.1) 20%, transparent 20%); */
   background-size: 60px 60px;
   animation: moveBackground 20s linear infinite;
   z-index: 1;
@@ -1536,7 +1536,8 @@ button:focus {
   color: #fff;
   z-index: 2; /* Ensure it stays above the background animation */
   transform: scale(1); /* Initial scale for animation */
-  transition: transform 0.5s ease-in-out; /* Smooth scale transition */
+  transition: transform 0.5s ease-in-out;
+   /* Smooth scale transition */
 }
 
 .project-container:hover {
@@ -1639,10 +1640,9 @@ button:focus {
   to { opacity: 1; transform: translateX(0); }
 }
 
-
-/* Loginj button and sign up buttoin  */
+/* General button styling */
 .custom-button {
-  background-color: #404f5f; /* Blue background */
+  background-color: #404f5f; /* Default background */
   color: rgb(239, 232, 232); /* White text */
   border: none; /* Remove default border */
   padding: 10px 20px; /* Padding inside the button */
@@ -1670,6 +1670,7 @@ button:focus {
   display: block; /* Make link fill the button */
 }
 
+/* Login button styling */
 .custom-button.login-button {
   background-color: #239835; /* Green background for login */
 }
@@ -1682,6 +1683,7 @@ button:focus {
   background-color: #1e7e34; /* Even darker green on click for login */
 }
 
+/* Signup button styling */
 .custom-button.signup-button {
   background-color: #2d2f2f; /* Cyan background for signup */
 }
@@ -1694,6 +1696,18 @@ button:focus {
   background-color: #161818; /* Even darker cyan on click for signup */
 }
 
+/* Logout button styling */
+.custom-button.logout-button {
+  background-color: #d9534f; /* Red background for logout */
+}
+
+.custom-button.logout-button:hover {
+  background-color: #c9302c; /* Darker red on hover for logout */
+}
+
+.custom-button.logout-button:active {
+  background-color: #ac2925; /* Even darker red on click for logout */
+}
 
 /* Container for the registration form */
 .register-container {
@@ -2139,4 +2153,79 @@ button:focus {
 .data-table td:focus, .data-table th:focus {
   outline: 3px solid #db6262;
   outline-offset: -1px; /* Slightly inset */
+}
+
+
+
+/* for MyrequestIT page */
+/* Styles for MyrequestIT component */
+
+.myrequest-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.myrequest-heading {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.request-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.request-item {
+  background-color: #f0f0f0;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.request-item:hover {
+  transform: translateY(-3px);
+}
+
+.request-details {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.request-actions {
+  display: flex;
+  align-items: center;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #d0c5c6;
+}
+
+@media (max-width: 768px) {
+  .myrequest-container {
+    padding: 15px;
+  }
+  
+  .myrequest-heading {
+    font-size: 2rem;
+  }
 }
