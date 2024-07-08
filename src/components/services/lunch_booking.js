@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import DigitalClock from "react-digital-clock";
 import { db } from "../firebase/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useAuth } from "../contexts/authContext";
@@ -62,9 +61,7 @@ function Service3() {
       <p className="service3-description">
         This page contains information about lunch booking services.
       </p>
-      <div className="service3-clock">
-        <DigitalClock />
-      </div>
+      
       {isBookingAllowed ? (
         <form className="service3-form" onSubmit={handleSubmit}>
           <div className="service3-form-group">
