@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const Login = () => {
-    const { userLoggedIn } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isSigningIn, setIsSigningIn] = useState(false);

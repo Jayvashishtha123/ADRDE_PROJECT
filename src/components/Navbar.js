@@ -24,12 +24,6 @@ function NavBar() {
 
   window.addEventListener("scroll", scrollHandler);
 
-  const handleLogout = () => {
-    doSignOut().then(() => {
-      navigate('/login');
-    });
-  };
-
   return (
     <Navbar
       expanded={expand}

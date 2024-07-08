@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import DRDOImage from "../../Assets/drdo_logo.png"; // Import an image representing DRDO
 
 function About() {
   return (

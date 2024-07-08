@@ -1,6 +1,5 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import Particle from "../Particle"; // Ensure this component is defined and imported correctly
 
 function Projects() {
   return (

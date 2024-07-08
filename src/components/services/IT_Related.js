@@ -4,7 +4,6 @@ import { collection, addDoc } from "firebase/firestore";
 import { useAuth } from "../contexts/authContext";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
 
 function Service1() {
   const [userName, setUserName] = useState("");
