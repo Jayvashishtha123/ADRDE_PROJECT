@@ -7,7 +7,6 @@ import Preloader from "./components/Pre";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
-import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
 import Service1 from "./components/services/IT_Related";
 import Service2 from "./components/services/safety_related";
@@ -30,6 +29,11 @@ import DataDisplayIT from "./components/Admin/DataDisplayIT";
 import DataDisplayLB from "./components/Admin/DataDisplayLB";
 import DataDisplaySR from "./components/Admin/DataDisplaySR";
 import MyrequestIT from "./components/MyRequest/MyrequestIT"
+import UserData from "./components/User_History/userHistory"
+import UserDataLB from "./components/User_History/userhistoryLB"
+import UserDataIT from "./components/User_History/userhistoryIT"
+import UserDataSR from "./components/User_History/userhistorySR"
+
 
 function App() {
   const [load, updateLoad] = useState(true);
@@ -54,7 +58,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/project" element={<Projects />} />
             <Route path="/about" element={<About />} />
             <Route path="/service1" element={<Service1 />} />
             <Route path="/service2" element={<Service2 />} />
@@ -63,6 +66,12 @@ function App() {
             <Route path="/DataDisplayLB" element={<DataDisplayLB/>} />
             <Route path="/DataDisplaySR" element={<DataDisplaySR/>} />
             <Route path="/MyrequestIT" element={<MyrequestIT/>} />
+            <Route path="/UserDataLB" element={<UserDataLB/>} />
+            <Route path="/UserDataIT" element={<UserDataIT/>} />
+            <Route path="/UserDataSR" element={<UserDataSR/>} />
+
+            <Route path="/UserData" element={<UserData/>} />
+
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />

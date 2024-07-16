@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import logo_strip from "../Assets/drdo_logo_strip.png";
+import logo_strip from "../Assets/satya_logo1.png";
 import { AiOutlineHome, AiOutlineUser, AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { Link,useNavigate } from "react-router-dom";
 import { useAuth } from "./contexts/authContext";
@@ -23,6 +23,12 @@ function NavBar() {
   }
 
   window.addEventListener("scroll", scrollHandler);
+
+  const handleLogout = () => {
+    doSignOut().then(() => {
+      navigate('/login');
+    });
+  };
 
   return (
     <Navbar
@@ -60,6 +66,12 @@ function NavBar() {
             <Nav.Item>
               <Nav.Link onClick={() => updateExpanded(false)} href="/project">
                 <AiOutlineFundProjectionScreen style={{ marginBottom: "2px" }} /> Contact Us
+              </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+              <Nav.Link onClick={() => updateExpanded(false)} href="/UserData">
+                <AiOutlineFundProjectionScreen style={{ marginBottom: "2px" }} /> History
               </Nav.Link>
             </Nav.Item>
           </Nav>

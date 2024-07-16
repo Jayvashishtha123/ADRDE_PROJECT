@@ -2229,3 +2229,213 @@ button:focus {
     font-size: 2rem;
   }
 }
+
+
+
+/* USER DATA PAGE for CHECKING HOSTORY */
+/* UserData.css */
+
+.user-data-container {
+  max-width: 800px;
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - 120px); /* Adjusts height to ensure footer is always at the bottom */
+  display: flex;
+  flex-direction: column;
+}
+
+.user-data-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.user-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.user-data-table-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.user-data-table-row:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.user-data-table-cell {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Footer Styles */
+.footer {
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Additional styles as needed */
+
+
+/* Styles for User History Component */
+
+.user-history-container {
+  background-color: #3b4da9;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Ensures the container covers the entire viewport */
+}
+
+.user-history-content {
+  max-width: 800px; /* Adjust as needed */
+  width: 100%;
+}
+
+.user-history-heading {
+  font-size: 2.6em;
+  text-align: center;
+  color: #8a7676; /* Adjust color as per your design */
+}
+
+.user-history-service-card {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+
+.user-history-service-card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.user-history-service-card .card-img-top {
+  height: 200px; /* Adjust as needed */
+  object-fit: cover;
+}
+
+.user-history-service-card .card-body {
+  padding: 20px;
+}
+
+.user-history-service-card .card-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.user-history-service-card .card-text {
+  font-size: 1.2em;
+}
+
+
+/* CSS for History of the lunch booking */
+/* Container styles */
+.user-data-container {
+  width: 100%;
+  max-width: 1200px; /* Limit the maximum width of the container */
+  margin: 60px auto 0 auto; /* Add top margin to avoid overlap with the navbar */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box; /* Include padding in element's total width and height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-data-container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading styles */
+.user-data-heading {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #444;
+  font-weight: 600;
+  text-transform: uppercase;
+  max-width: 100%; /* Ensure the heading does not overflow */
+  word-wrap: break-word; /* Break words if they are too long */
+}
+
+/* Table styles */
+.user-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Table header styles */
+.user-data-table-header {
+  background-color: #007bff;
+  color: white;
+  text-align: left;
+  padding: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid #ddd;
+}
+
+/* Table row styles */
+.user-data-table-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.user-data-table-row:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Table cell styles */
+.user-data-table-cell {
+  padding: 15px;
+  border: 1px solid #ddd;
+  text-align: center; /* Align text to the center */
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover effect for table rows */
+.user-data-table-row:hover .user-data-table-cell {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Button styles */
+.user-data-table-cell button {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.user-data-table-cell button:hover {
+  background-color: #c9302c;
+  transform: scale(1.05);
+}
+
+.user-data-table-cell button:focus {
+  outline: none;
+  box-shadow: 0 0 4px #c9302c;
+}

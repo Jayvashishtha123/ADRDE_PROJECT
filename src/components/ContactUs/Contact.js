@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 
-function Projects() {
+function Contact() {
   return (
     <Container fluid className="project-section">
       <div className="project-container">
@@ -48,4 +48,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default Contact;
